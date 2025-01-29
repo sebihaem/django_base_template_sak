@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_project_root.base_view.apps.BaseViewConfig",
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,7 @@ ROOT_URLCONF = "configuration_root.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / 'django_project_root/templates/', ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -115,7 +116,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
+# Static files (CSS, JavaScript, images)
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"  # Collected static files for production
+
+# Media files (uploads)
+MEDIA_URL = "/media/"  # URL path for serving media files
+MEDIA_ROOT = BASE_DIR / "media"  # Where uploaded files are stored
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
